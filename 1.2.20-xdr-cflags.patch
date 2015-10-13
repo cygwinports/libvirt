@@ -1,0 +1,10 @@
+--- origsrc/libvirt-1.2.20/src/Makefile.am	2015-09-27 19:07:36.000000000 -0500
++++ src/libvirt-1.2.20/src/Makefile.am	2015-10-13 11:28:32.322682600 -0500
+@@ -2089,6 +2089,7 @@ libvirt_admin_la_CFLAGS = \
+ 		-I$(srcdir)/admin
+ 
+ libvirt_admin_la_CFLAGS += \
++		$(XDR_CFLAGS)			\
+ 		$(CAPNG_CFLAGS)			\
+ 		$(YAJL_CFLAGS)			\
+ 		$(SSH2_CFLAGS)			\

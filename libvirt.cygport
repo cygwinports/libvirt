@@ -1,0 +1,27 @@
+NAME="libvirt"
+VERSION=1.2.20
+RELEASE=1
+CATEGORY="Libs"
+SUMMARY="Virtualization management library"
+DESCRIPTION="Libvirt is collection of software that provides a convenient way
+to manage virtual machines and other virtualization functionality, such as
+storage and network interface management. These software pieces include an API
+library and a command line utility (virsh)."
+HOMEPAGE="http://libvirt.org/"
+SRC_URI="http://libvirt.org/sources/libvirt-${VERSION}.tar.gz"
+PATCH_URI="1.2.20-xdr-cflags.patch"
+
+PKG_NAMES="libvirt0 libvirt-common libvirt-devel libvirt-doc libvirt-client"
+libvirt0_REQUIRES="libvirt-common"
+libvirt0_CONTENTS="usr/bin/cygvirt*-0.dll"
+libvirt_common_CONTENTS="--exclude=html etc/ usr/share/doc/${NAME}/ usr/share/libvirt/ usr/share/locale/"
+libvirt_devel_CONTENTS="usr/include/ usr/lib/lib* usr/lib/pkgconfig/"
+libvirt_doc_CONTENTS="usr/share/doc/${NAME}/html/ usr/share/gtk-doc/"
+libvirt_client_CONTENTS="usr/bin/vir* usr/share/man/man1/vir*"
+# only for shutting down local guests before system shutdown/hibernate
+PKG_IGNORE="usr/libexec/libvirt-guests.sh"
+
+CYGCONF_ARGS="
+	--with-html-subdir=${NAME}/html
+	--without-libvirtd
+"
