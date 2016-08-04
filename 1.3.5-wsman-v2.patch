@@ -1,0 +1,69 @@
+--- origsrc/libvirt-1.3.5/src/hyperv/hyperv_wmi.c	2015-01-23 05:46:24.000000000 -0600
++++ src/libvirt-1.3.5/src/hyperv/hyperv_wmi.c	2016-07-04 00:48:42.299603300 -0500
+@@ -40,7 +40,7 @@
+     "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/*"
+ 
+ #define ROOT_VIRTUALIZATION \
+-    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/*"
++    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/v2/*"
+ 
+ #define VIR_FROM_THIS VIR_FROM_HYPERV
+ 
+--- origsrc/libvirt-1.3.5/src/hyperv/hyperv_wmi_classes.generated.h	2015-01-23 20:24:14.000000000 -0600
++++ src/libvirt-1.3.5/src/hyperv/hyperv_wmi_classes.generated.h	2016-07-04 00:44:34.573889800 -0500
+@@ -7,7 +7,7 @@
+  */
+ 
+ #define MSVM_COMPUTERSYSTEM_RESOURCE_URI \
+-    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/Msvm_ComputerSystem"
++    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/v2/Msvm_ComputerSystem"
+ 
+ #define MSVM_COMPUTERSYSTEM_CLASSNAME \
+     "Msvm_ComputerSystem"
+@@ -62,7 +62,7 @@ struct _Msvm_ComputerSystem {
+  */
+ 
+ #define MSVM_CONCRETEJOB_RESOURCE_URI \
+-    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/Msvm_ConcreteJob"
++    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/v2/Msvm_ConcreteJob"
+ 
+ #define MSVM_CONCRETEJOB_CLASSNAME \
+     "Msvm_ConcreteJob"
+@@ -124,7 +124,7 @@ struct _Msvm_ConcreteJob {
+  */
+ 
+ #define MSVM_MEMORYSETTINGDATA_RESOURCE_URI \
+-    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/Msvm_MemorySettingData"
++    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/v2/Msvm_MemorySettingData"
+ 
+ #define MSVM_MEMORYSETTINGDATA_CLASSNAME \
+     "Msvm_MemorySettingData"
+@@ -175,7 +175,7 @@ struct _Msvm_MemorySettingData {
+  */
+ 
+ #define MSVM_PROCESSORSETTINGDATA_RESOURCE_URI \
+-    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/Msvm_ProcessorSettingData"
++    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/v2/Msvm_ProcessorSettingData"
+ 
+ #define MSVM_PROCESSORSETTINGDATA_CLASSNAME \
+     "Msvm_ProcessorSettingData"
+@@ -230,7 +230,7 @@ struct _Msvm_ProcessorSettingData {
+  */
+ 
+ #define MSVM_VIRTUALSYSTEMSETTINGDATA_RESOURCE_URI \
+-    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/Msvm_VirtualSystemSettingData"
++    "http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/v2/Msvm_VirtualSystemSettingData"
+ 
+ #define MSVM_VIRTUALSYSTEMSETTINGDATA_CLASSNAME \
+     "Msvm_VirtualSystemSettingData"
+--- origsrc/libvirt-1.3.5/src/hyperv/hyperv_wmi_generator.py	2015-01-23 05:46:24.000000000 -0600
++++ src/libvirt-1.3.5/src/hyperv/hyperv_wmi_generator.py	2016-07-04 00:44:21.933270900 -0500
+@@ -71,7 +71,7 @@ class Class:
+         if self.name.startswith("Win32_"):
+             header += "    \"http://schemas.microsoft.com/wbem/wsman/1/wmi/root/cimv2/%s\"\n" % self.name
+         else:
+-            header += "    \"http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/%s\"\n" % self.name
++            header += "    \"http://schemas.microsoft.com/wbem/wsman/1/wmi/root/virtualization/v2/%s\"\n" % self.name
+ 
+         header += "\n"
+         header += "#define %s_CLASSNAME \\\n" % name_upper

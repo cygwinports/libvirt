@@ -1,0 +1,18 @@
+--- origsrc/libvirt-1.3.5/src/Makefile.am	2016-05-28 11:47:33.000000000 -0500
++++ src/libvirt-1.3.5/src/Makefile.am	2016-06-27 18:21:42.579828300 -0500
+@@ -1158,6 +1158,7 @@ libvirt_driver_la_SOURCES = $(DRIVER_SOU
+ 
+ libvirt_driver_la_CFLAGS = \
+ 		$(GNUTLS_CFLAGS) $(CURL_CFLAGS) \
++		$(XDR_CFLAGS) \
+ 		-I$(srcdir)/conf $(AM_CFLAGS)
+ libvirt_driver_la_LIBADD = \
+ 		$(GNUTLS_LIBS) $(CURL_LIBS) $(DLOPEN_LIBS)
+@@ -1349,6 +1350,7 @@ endif ! WITH_DRIVER_MODULES
+ libvirt_driver_qemu_impl_la_CFLAGS = \
+ 		$(GNUTLS_CFLAGS) \
+ 		$(LIBNL_CFLAGS) \
++		$(XDR_CFLAGS) \
+ 		-I$(srcdir)/access \
+ 		-I$(srcdir)/conf \
+ 		-I$(srcdir)/secret \
