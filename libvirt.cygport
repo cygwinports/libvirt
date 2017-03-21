@@ -1,5 +1,5 @@
 NAME="libvirt"
-VERSION=1.3.5
+VERSION=3.1.0
 RELEASE=1
 CATEGORY="Libs"
 SUMMARY="Virtualization management library"
@@ -8,10 +8,9 @@ to manage virtual machines and other virtualization functionality, such as
 storage and network interface management. These software pieces include an API
 library and a command line utility (virsh)."
 HOMEPAGE="http://libvirt.org/"
-SRC_URI="http://libvirt.org/sources/libvirt-${VERSION}.tar.gz"
+SRC_URI="http://libvirt.org/sources/libvirt-${VERSION}.tar.xz"
 PATCH_URI="
-	1.3.5-wsman-v2.patch
-	1.3.5-xdr-cflags.patch
+	3.1.0-wsman-v2.patch
 "
 
 PKG_NAMES="libvirt0 libvirt-common libvirt-devel libvirt-doc libvirt-client"
